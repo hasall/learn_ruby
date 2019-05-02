@@ -1,0 +1,43 @@
+def echo(s)
+  print s
+end
+
+def shout(s)
+  print s.upcase
+end
+
+def repeat(s)
+  print s.to_s + " " + s.to_s
+end
+
+def start_of_word(s, i)
+  print s.byteslice(0, i)
+end
+
+def first_word(s)
+  print s.split[0]
+end
+
+def titleize(s)
+  smas = s.split
+  print smas[0].capitalize
+  i = 0
+  smas.each {
+    |w|
+    if i==0
+      i=1
+      next
+    end
+    i += 1
+    if smas.length-1 == i
+      print w.capitalize
+      break
+    end
+    if w.length > 4
+      print w.capitalize + " "
+    else
+      print w + " "
+    end
+
+  }
+end

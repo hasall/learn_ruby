@@ -1,0 +1,7 @@
+def hello
+  print "Hello!"
+end
+
+def greet(str)
+  print "Hello, #{str}!"
+end

@@ -1,0 +1,11 @@
+def add(x1,x2)
+  print "#{x1+x2}"
+end
+
+def sum(mas)
+  print mas.sum
+end
+
+def subtract(x1, x2)
+  print x1-x2
+end
