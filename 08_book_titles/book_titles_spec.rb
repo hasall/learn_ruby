@@ -12,7 +12,32 @@
 # Book Titles in English obey some strange capitalization rules. For example, "and" is lowercase in "War and Peace". This test attempts to make sense of some of those rules.
 #
 
-require 'book'
+
+#require 'book'
+class Book
+  @title
+  def title; @title; end
+  def title=(value)
+    @title = titleize(value)
+  end
+  def titleize(s)
+    temp = ["an", "the", "a", "and", "in", "of"]
+    str = String.new
+    smas = s.split
+    str+= smas[0].capitalize
+    i = 1
+    size = smas.length
+    while i < size do
+      if temp.include? smas[i]
+        str += " " + smas[i]
+      else
+        str += " " + smas[i].capitalize
+      end
+      i+=1
+    end
+    str
+  end
+end
 
 describe Book do
 

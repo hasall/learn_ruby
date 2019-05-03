@@ -13,7 +13,14 @@
 #
 # This is (a stripped down version of) an actual useful concept: a function that runs a block of code and then tells you how long it took to run.
 
-require "performance_monitor"
+#require "performance_monitor"
+
+def measure(x=1)
+  start = Time.now
+  x.times{yield if block_given?}
+  Time.now - start
+end
+
 
 # loads up the Time.parse method -- do NOT create time.rb!
 # http://ruby-doc.org/core-2.3.1/Time.html
@@ -35,9 +42,9 @@ describe "Performance Monitor" do
     ## has been updated with Rspec 3.  The now form syntax is:
     # old:
     # Time.stub(:now).and_return( @eleven_am )
-    # new: 
+    # new:
     allow(Time).to receive(:now).and_return( @eleven_am)
-    
+
 
     elapsed_time = measure do
     end

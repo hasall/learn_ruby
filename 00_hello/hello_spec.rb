@@ -115,14 +115,8 @@
 #
 
 
-#require "hello"
-def hello
-  %(Hello!)
-end
+require "hello"
 
-def greet(str)
-  %(Hello, #{str}!)
-end
 
 
 describe "the hello function" do

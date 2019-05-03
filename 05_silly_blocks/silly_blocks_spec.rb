@@ -6,7 +6,27 @@
 # * loops
 #
 
-require "silly_blocks"
+#require "silly_blocks"
+def reverser
+  str = yield
+  smas = str.split
+  nstr = smas[0].reverse
+  i=1
+  size = smas.length
+  while i < size
+    nstr+=" " + smas[i].reverse
+    i+=1
+  end
+  nstr
+end
+
+def adder(x = 1)
+  x + yield
+end
+
+def repeater(x=1)
+  x.times{yield}
+end
 
 describe "some silly block functions" do
 

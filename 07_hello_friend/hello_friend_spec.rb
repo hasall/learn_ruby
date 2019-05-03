@@ -88,7 +88,16 @@
 #
 #
 
-require "friend"
+#require "friend"
+class Friend
+  def greeting(s = '')
+    if s==''
+      "Hello!"
+    else
+      "Hello, #{s}!"
+    end
+  end
+end
 
 describe Friend do
   it "says hello" do

@@ -7,7 +7,37 @@
 #
 # # Timer
 
-require 'timer'
+#require 'timer'
+class Timer
+
+  def initialize(sec = 0.0)
+    @seconds = sec
+  end
+  def seconds
+    @seconds
+  end
+  def seconds=(value)
+    @seconds = value
+  end
+  def time_string
+    sec = @seconds
+    hh = 0
+    mm = 0
+    while sec > 3600
+      sec -= 3600
+      hh += 1
+    end
+    while sec > 60
+      sec -= 60
+      mm += 1
+    end
+    str = ((hh<10)? ("0"+hh.to_s):hh.to_s) + ":"
+    str +=((mm<10)? ("0"+mm.to_s):mm.to_s) + ":"
+    str +=(sec<10)? ("0"+sec.to_i.to_s):sec.to_s
+    str
+  end
+end
+
 
 describe "Timer" do
   before(:each) do
@@ -45,16 +75,15 @@ describe "Timer" do
   # Uncomment these specs if you want to test-drive that
   # method, then call that method from inside of time_string.
   #
-  # describe 'padded' do
-  #   it 'pads zero' do
-  #     @timer.padded(0).should == '00'
-  #   end
-  #   it 'pads one' do
-  #     @timer.padded(1).should == '01'
-  #   end
-  #   it "doesn't pad a two-digit number" do
-  #     @timer.padded(12).should == '12'
-  #   end
-  # end
-
+  describe 'padded' do
+    it 'pads zero' do
+      @timer.padded(0).should == '00'
+    end
+    it 'pads one' do
+      @timer.padded(1).should == '01'
+    end
+    it "doesn't pad a two-digit number" do
+      @timer.padded(12).should == '12'
+    end
+  end
 end
