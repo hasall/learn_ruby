@@ -15,7 +15,17 @@
 #    1.0 / 2.0 => 0.5
 #
 
-require "temperature"
+#require "temperature"
+def ctof(c)
+  i = ((c*1.8)+32)
+  (i.to_int == i.round(1))? i.to_int: i.round(1)
+end
+
+def ftoc(f)
+  i = ((f-32)/1.8)
+  (i.to_int == i.round(1))? i.to_int: i.round(1)
+end
+
 
 describe "temperature conversion functions" do
 

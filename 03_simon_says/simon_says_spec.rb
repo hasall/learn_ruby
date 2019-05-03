@@ -11,7 +11,49 @@
 # When you make the second `repeat` test pass, you might break the **first**
 #
 
-require "simon_says"
+#require "simon_says"
+def echo(s)
+  s
+end
+
+def shout(s)
+  s.upcase
+end
+
+def repeat(s, i = 2)
+  str = s
+  i-=1
+  i.times {
+    str += " " + s.to_s
+  }
+  str
+end
+
+def start_of_word(s, i)
+  s.byteslice(0, i)
+end
+
+def first_word(s)
+  s.split[0]
+end
+
+def titleize(s)
+  str = String.new
+  smas = s.split
+  str+= smas[0].capitalize
+  i = 1
+  size = smas.length
+  while i < size do
+    if smas[i].length > 4 || i == size - 1
+      str += " " + smas[i].capitalize
+    else
+      str += " " + smas[i]
+    end
+    i+=1
+  end
+  str
+end
+
 
 describe "Simon says" do
   describe "echo" do
