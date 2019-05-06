@@ -1,59 +1,43 @@
 class Dictionary
   def initialize
-    @mas = {}
+    @hash = {}
   end
 
   def entries
-    @mas
+    @hash
   end
 
   def find( x )
     ss = {}
-    @mas.each_pair{
+    @hash.each_pair{
       |k, v|
-      if k.include? x
-        ss[k] = v
-      end
+      ss[k] = v if k.include? x
     }
     ss
   end
   def include?(x)
-    t=false
-    @mas.each_pair{
-      |k, v|
-      if k==x
-        t = true
-      end
-    }
-    if t
-      true
-    else
-      false
-    end
+    @hash.has_key? x
   end
 
   def add(x)
     if Hash.try_convert(x) != nil
-      x.each_pair{
-        |k, v|
-        @mas[k] = v
-      }
+      @hash.merge!(x)
     else
-      @mas[x] = nil
+      @hash[x] = nil
     end
-    @mas = @mas.sort.to_h
+    @hash = @hash.sort.to_h
   end
 
   def printable
-    str = String.new
-    @mas.each_pair{
+    str = ""
+    @hash.each_pair{
       |k, v|
       str+="[#{k}] \"#{v}\"\n"
     }
-    str.byteslice(0, str.length-1)
+    str[0..str.length-2]
   end
 
   def keywords
-    @mas.keys
+    @hash.keys
   end
 end

@@ -29,20 +29,9 @@ class XmlDocument
     end
   end
 
-  def hello(x = nil)
-    main(x, "hello", ((block_given?)?yield: nil))
+  def def method_missing(method, *args)
+    main(args, method, ((block_given?)?yield: nil))
   end
-  def goodbye(x = nil)
-    main(x, "goodbye", ((block_given?)?yield: nil))
-  end
-  def come_back(x = nil)
-    main(x, "come_back", ((block_given?)?yield: nil))
-  end
-  def ok_fine(x = nil)
-    main(x, "ok_fine", ((block_given?)?yield: nil))
-  end
-  def send(tag, x = nil)
-    main(x, tag, ((block_given?)?yield: nil))
-  end
+  
 end
 #yield if block_given?

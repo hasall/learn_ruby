@@ -1,26 +1,19 @@
 Array.class_eval do
   def sum
-    s = 0
-    self.each{ |v|
-      s += v
-    }
-    s
+    s = self.inject(&:+)
+    (s==nil)?0:s
   end
   def square
     m = []
     i = 0
-    self.each{ |v|
-      m[i] = v*v
-      i+=1
+    self.map{ |v|
+      v*v
     }
-    m
   end
   def square!
     i = 0
-    self.each{ |v|
-      self[i] = v*v
-      i+=1
+    self.map!{ |v|
+      v*v
     }
-    self
   end
 end
